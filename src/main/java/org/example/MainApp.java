@@ -102,21 +102,7 @@ public class MainApp extends JFrame {
         return panel;
     }
 
-    // --- 4. HALAMAN LAPORAN ---
-    private JPanel buatLaporanPage() {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBackground(new Color(255, 250, 240));
 
-        JLabel lblInfo = new JLabel("Total Kegiatan: " + daftarKegiatan.size(), JLabel.CENTER);
-        lblInfo.setFont(new Font("Serif", Font.BOLD, 30));
-
-        JButton btnBack = new JButton("Kembali ke Menu Utama");
-        btnBack.addActionListener(e -> cardLayout.show(mainPanel, "Dashboard"));
-
-        panel.add(lblInfo, BorderLayout.CENTER);
-        panel.add(btnBack, BorderLayout.SOUTH);
-        return panel;
-    }
 
     private void styleButton(JButton btn) {
         btn.setBackground(new Color(70, 130, 180));
