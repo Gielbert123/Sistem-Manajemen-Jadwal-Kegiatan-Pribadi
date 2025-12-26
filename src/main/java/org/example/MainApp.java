@@ -102,38 +102,19 @@ public class MainApp extends JFrame {
         return panel;
     }
 
-    // --- 3. HALAMAN LIST ---
-    private JPanel buatListPage() {
-        JPanel panel = new JPanel(new BorderLayout(10, 10));
-        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+    // --- 4. HALAMAN LAPORAN ---
+    private JPanel buatLaporanPage() {
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.setBackground(new Color(255, 250, 240));
 
-        String[] columnNames = {"Judul", "Tanggal", "Kategori"};
-        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
-        for (Kegiatan k : daftarKegiatan) {
-            model.addRow(new Object[]{k.getJudul(), k.getTanggal(), k.getKategori()});
-        }
+        JLabel lblInfo = new JLabel("Total Kegiatan: " + daftarKegiatan.size(), JLabel.CENTER);
+        lblInfo.setFont(new Font("Serif", Font.BOLD, 30));
 
-        JTable table = new JTable(model);
-        panel.add(new JScrollPane(table), BorderLayout.CENTER);
-
-        JPanel btnPanel = new JPanel();
-        JButton btnDel = new JButton("Hapus");
-        JButton btnBack = new JButton("Kembali");
-
-        btnDel.addActionListener(e -> {
-            int row = table.getSelectedRow();
-            if (row != -1) {
-                daftarKegiatan.remove(row);
-                FileHandler.simpanSemua(daftarKegiatan);
-                mainPanel.add(buatListPage(), "List");
-                cardLayout.show(mainPanel, "List");
-            }
-        });
-
+        JButton btnBack = new JButton("Kembali ke Menu Utama");
         btnBack.addActionListener(e -> cardLayout.show(mainPanel, "Dashboard"));
-        btnPanel.add(btnDel); btnPanel.add(btnBack);
-        panel.add(btnPanel, BorderLayout.SOUTH);
 
+        panel.add(lblInfo, BorderLayout.CENTER);
+        panel.add(btnBack, BorderLayout.SOUTH);
         return panel;
     }
 
